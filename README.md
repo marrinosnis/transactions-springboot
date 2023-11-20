@@ -1,1 +1,1 @@
-Springboot application for transactions
+Springboot application for bank transactions
