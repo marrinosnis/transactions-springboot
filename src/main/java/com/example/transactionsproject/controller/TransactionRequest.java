@@ -1,33 +1,39 @@
 package com.example.transactionsproject.controller;
 
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.lang.Integer;
+
+@Service
 public class TransactionRequest {
-    private Integer fromAccount;
+    private Integer fromAccountId;
 
-    private Integer toAccount;
+    private Integer toAccountId;
 
-    private Double amount;
+    private BigDecimal amount;
 
-    public Integer getFromAccount() {
-        return fromAccount;
+    public Integer getFromAccountId() {
+        return fromAccountId;
     }
 
     public void setFromAccount(Integer fromAccount) {
-        this.fromAccount = fromAccount;
+        this.fromAccountId = fromAccount;
     }
 
-    public Integer getToAccount() {
-        return toAccount;
+    public Integer getToAccountId() {
+        return toAccountId;
     }
 
     public void setToAccount(Integer toAccount) {
-        this.toAccount = toAccount;
+        this.toAccountId = toAccount;
     }
 
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 }
