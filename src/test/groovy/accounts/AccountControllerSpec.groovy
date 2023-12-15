@@ -1,4 +1,4 @@
-package groovy.accounts
+package accounts
 
 import com.example.transactionsproject.api.AccountApi
 import com.example.transactionsproject.controller.AccountControllerImpl
@@ -13,18 +13,29 @@ class AccountControllerSpec extends Specification {
 
 
     def setup() {
-        accountsService = Mock(AccountsService)
+        accountsService = Mock()
         accountApi = new AccountControllerImpl(accountsService)
-
     }
 
     def "getSpecificAccountById calls accountService"() {
-        when:
+        when: "A GET request is happened to get a specific account"
             def response = accountApi.getSpecificAccountById(2)
 
-        then:
+        then: "the getAccountById function executed once and return an accountDto object"
             1 * accountsService.getAccountById(2)  >> new AccountDto()
             response.class == AccountDto
+            0 * _
+    }
+
+    def "createAccount calls accountService"() {
+        given:
+            AccountDto accountDto = new AccountDto()
+
+        when: "a POST request is happened to create an account"
+            accountApi.createAccount(accountDto)
+
+        then: "the createAccount function is executed once"
+            1 * accountsService.createAccount(accountDto)
             0 * _
     }
 }

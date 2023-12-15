@@ -3,6 +3,7 @@ package com.example.transactionsproject.model;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.Currency;
 
 @Entity
 @Table(name = "accounts")
