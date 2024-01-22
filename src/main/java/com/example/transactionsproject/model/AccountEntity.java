@@ -2,11 +2,12 @@ package com.example.transactionsproject.model;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Currency;
 
 @Entity
 @Table(name = "accounts")
-public class TransactionsDatabaseTable {
+public class AccountEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,23 +19,24 @@ public class TransactionsDatabaseTable {
     @Column
     private Double balance;
 
-    @Column
-    private Date created_at;
+    @Column(columnDefinition = "TIMESTAMP")
+    private Timestamp createdAt;
 
-    public TransactionsDatabaseTable(){}
+    public AccountEntity(){}
 
-    public TransactionsDatabaseTable(Integer id, String currency, Double balance, Date created_at){
+
+    public AccountEntity(Integer id, String currency, Double balance, Timestamp createdAt) {
         this.id = id;
         this.currency = currency;
         this.balance = balance;
-        this.created_at = created_at;
+        this.createdAt = createdAt;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -54,11 +56,11 @@ public class TransactionsDatabaseTable {
         this.balance = balance;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 }
