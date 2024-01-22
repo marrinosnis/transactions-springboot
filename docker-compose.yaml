@@ -12,6 +12,14 @@ services:
       - POSTGRES_DB
 
     volumes:
-      - /Users/marinosnisiotis/Desktop/spring-boot/docker-postgres-container-data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
     image: postgres
+
+volumes:
+  postgres_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/Users/marinosnisiotis/Desktop/spring-boot/docker-postgres-container-data'
