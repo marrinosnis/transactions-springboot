@@ -13,8 +13,8 @@ volume folder will be created in the root path of your machine, in a folder name
 The volume name is `transactions-project_postgres_data` and can be found by executing the command:\
 `docker volume ls`.
 
-You will need a database management tool in order to connect to the database, and perform some queries for checking\
-the state of the database. Recommended tools are: `pgAdmin4` or `DBeaver`. You may use other tool that you\
+You will need a database management tool in order to connect to the database, and perform some queries for checking
+the state of the database. Recommended tools are: `pgAdmin4` or `DBeaver`. You may use other tool that you
 are more familiarized with it.
 
 ### Start the application 
@@ -31,6 +31,6 @@ and perform a select query to the tables of the project:
 
 
 ### Perform API calls
-In order to check the application's functionality, you can use the `postman` tool to perform some api calls.\
+In order to check the application's functionality, you can use the `postman` tool to perform some api calls.
 The first API is: `/accounts/create` and can be tested by performing a POST request with the following data:\
 
