@@ -1,4 +1,4 @@
-package transactions
+package groovy.transactions
 
 import com.example.transactionsproject.controller.TransactionRequest
 import com.example.transactionsproject.dto.AccountDto
