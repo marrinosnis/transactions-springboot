@@ -1,4 +1,4 @@
-package groovy.accounts
+package accounts
 
 import com.example.transactionsproject.api.AccountApi
 import com.example.transactionsproject.controller.AccountControllerImpl

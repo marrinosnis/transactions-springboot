@@ -1,4 +1,4 @@
-package groovy.accounts
+package accounts
 import com.example.transactionsproject.dto.AccountDto
 import com.example.transactionsproject.mappers.AccountMapper
 import com.example.transactionsproject.model.AccountEntity

@@ -2,7 +2,10 @@ package com.example.transactionsproject.service;
 
 import com.example.transactionsproject.controller.TransactionRequest;
 import com.example.transactionsproject.dto.AccountDto;
+import com.example.transactionsproject.dto.TransactionDto;
+import com.example.transactionsproject.exceptions.AccountNotExistException;
 import com.example.transactionsproject.exceptions.TransactionErrorException;
+import com.example.transactionsproject.exceptions.TransferMoneyBetweenSameAccounts;
 import com.example.transactionsproject.model.TransactionEntity;
 import com.example.transactionsproject.repository.TransactionsRepository;
 import jakarta.transaction.Transactional;
@@ -30,14 +33,14 @@ public class TransactionsService {
         transactionsRepository.save(transactionEntity);
     }
     @Transactional
-    public void transferMoneyBetweenAccounts(TransactionRequest transactionRequest) {
-        AccountDto fromAccount = accountsService.getAccountById(transactionRequest.getFromAccountId());
-        AccountDto toAccount = accountsService.getAccountById(transactionRequest.getToAccountId());
+    public void transferMoneyBetweenAccounts(TransactionDto transactionDto) {
+        AccountDto fromAccount = accountsService.getAccountById(transactionDto.getFromAccountId());
+        AccountDto toAccount = accountsService.getAccountById(transactionDto.getToAccountId());
         accountsService.checkIfAccountsExists(fromAccount.getId(), toAccount.getId());
-        if (transactionRequest.getFromAccountId().equals(transactionRequest.getToAccountId())) {
-            throw new RuntimeException();
+        if (transactionDto.getFromAccountId().equals(transactionDto.getToAccountId())) {
+            throw new TransferMoneyBetweenSameAccounts();
         }
-        checkBalanceAndTransfer(fromAccount, toAccount, transactionRequest.getAmount());
+        checkBalanceAndTransfer(fromAccount, toAccount, transactionDto.getAmount());
     }
 
     private void checkBalanceAndTransfer(AccountDto balanceFromAccount, AccountDto balanceToAccount, BigDecimal amount) {

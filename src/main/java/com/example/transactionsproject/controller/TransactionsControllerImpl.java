@@ -1,7 +1,9 @@
 package com.example.transactionsproject.controller;
 
 import com.example.transactionsproject.api.TransactionApi;
+import com.example.transactionsproject.dto.TransactionDto;
 import com.example.transactionsproject.service.TransactionsService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,7 +15,7 @@ public class TransactionsControllerImpl implements TransactionApi {
         this.transactionsService = transactionsService;
     }
 
-    public void transferMoneyFromAccount(@RequestBody TransactionRequest transactionRequest){
-        transactionsService.transferMoneyBetweenAccounts(transactionRequest);
+    public void transferMoneyFromAccount(@Valid @RequestBody TransactionDto transactionDto){
+        transactionsService.transferMoneyBetweenAccounts(transactionDto);
     }
 }
