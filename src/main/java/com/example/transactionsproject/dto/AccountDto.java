@@ -1,5 +1,6 @@
 package com.example.transactionsproject.dto;
 
+import com.example.transactionsproject.customValidator.ValidName;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,6 +11,8 @@ public class AccountDto {
     @Valid
     @NotNull(message = "the id cannot be blank")
     private Integer id;
+    @ValidName
+    private String name;
     @NotBlank(message = "you should add the type of the currency")
     private String currency; //Currency
     @NotNull(message = "you should add the balance, or 0.0")
@@ -21,6 +24,14 @@ public class AccountDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCurrency() {

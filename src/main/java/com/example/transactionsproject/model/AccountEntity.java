@@ -13,6 +13,9 @@ public class AccountEntity {
     private Integer id;
 
     @Column
+    private String name;
+
+    @Column
     private String currency;
 
     @Column
@@ -24,8 +27,9 @@ public class AccountEntity {
     public AccountEntity(){}
 
 
-    public AccountEntity(Integer id, String currency, Double balance, Timestamp createdAt) {
+    public AccountEntity(Integer id, String name, String currency, Double balance, Timestamp createdAt) {
         this.id = id;
+        this.name = name;
         this.currency = currency;
         this.balance = balance;
         this.createdAt = createdAt;
@@ -38,6 +42,10 @@ public class AccountEntity {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getName() {return name;}
+
+    public void setName(String name){this.name = name;}
 
     public String getCurrency() {
         return currency;
